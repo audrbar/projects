@@ -50,7 +50,7 @@ function App() {
   }
 
   return (
-    <div className="flex divide-x">
+    <div className="d-flex flex-row">
       {columns.map((column, index) => (
         <div
           key={index}
@@ -58,11 +58,11 @@ function App() {
           onDragOver={(e) => e.preventDefault()}
           onDragEnter={() => handleDragEnter(column.status)}
         >
-          <div className="flex justify-between text-3xl p-2 font-bold text-gray-500">
-            <h2 className="capitalize">{column.status}</h2>
+          <div style={{ height: "250px" }} className="row d-flex justify-content-between bg-light">
+            <h2 className="text-danger">{column.status}</h2>
             {column.tasks.reduce((total, task) => total + (task?.points || 0), 0)}
           </div>
-          <div className={`h-full ${currentlyHoveringOver === column.status ? 'bg-gray-200' : ''}`}>
+          <div className={`col ${currentlyHoveringOver === column.status ? 'bg-light' : ''}`}>
             {column.tasks.map((task) => (
               <TaskCard
                 task={task}
